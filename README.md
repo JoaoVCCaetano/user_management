@@ -15,16 +15,16 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Installation
 
 1. **Clone the repository**
-	- <git clone https://github.com/JoaoVCCaetano/user_management.git>
+	- git clone https://github.com/JoaoVCCaetano/user_management.git
 	
 2. **Install Composer dependencies for the main project:**
-	- <composer install>
+	- composer install
 	
 3. **Install Composer dependencies for the WebSocket server:**
-	- <cd docker/websocket composer install>
+	- cd docker/websocket composer install
 	
 4. **Build and run the Docker containers**
-	- <docker-compose up -d --build>
+	- docker-compose up -d --build
 	
 5. **Access the application:**
 	- Open your browser and navigate to 'http://localhost:8000/users'
