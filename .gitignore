@@ -1,0 +1,7 @@
+# Ignorar pastas vendor
+/vendor/
+docker/websocket/vendor/
+
+# Ignorar arquivos composer.lock
+/composer.lock
+docker/websocket/composer.lock

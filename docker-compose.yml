@@ -1,0 +1,59 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    container_name: nginx-user-management
+    ports:
+      - "8000:80"
+    volumes:
+      - ./public:/var/www/html/public
+    depends_on:
+      - php
+    networks:
+      - app-network
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: php-fpm
+    networks:
+      - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      -  ./:/var/www/html
+
+  db:
+    build:
+      context: ./docker/mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user_management
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  websocket:
+    build:
+      context: ./docker/websocket
+      dockerfile: Dockerfile
+    container_name: websocket
+    networks:
+      - app-network
+    volumes:
+      -  ./docker/websocket:/var/www/html
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "XDebug User Management",
+            "type": "php",
+            "request": "launch",
+            "hostname": "0.0.0.0",
+            "port": 9030,
+            "pathMappings": {
+                "/var/www/html": "${workspaceFolder}"
+            }
+        }
+    ]
+}
